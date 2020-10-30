@@ -1,11 +1,28 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { Navbar } from './src/Navbar/Navbar';
+import {AddTodo} from './src/AddTodo/AddTodo';
 
 export default function App() {
+  const [listTodos, setTodo] = useState([]);
+  const addTodo = (name) => {
+      const newTodo = {
+          id: Date.now().toString(),
+          name
+      };
+      setTodo(prev => [...prev, newTodo])
+  };
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Navbar title='Учим React Native!' />
+      <AddTodo
+          onSubmit={addTodo}
+      />
+      <View>
+          {listTodos.map(item => <Text>{item.name}</Text>)}
+      </View>
       <StatusBar style="auto" />
     </View>
   );
@@ -13,9 +30,9 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    // flex: 1,
+    // backgroundColor: '#fff',
+    // alignItems: 'center',
+    // justifyContent: 'center',
   },
 });
