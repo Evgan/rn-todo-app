@@ -1,0 +1,16 @@
+.todo {
+  flex-direction: row;
+  align-items: center;
+  padding: 15px;
+  border: 1px solid #eeeeee;
+  border-radius: 5px;
+}
+
+.name {
+  width: 70%;
+  color: black;
+  font-size: 20px;
+  padding: 10px;
+  border-bottom-color: black;
+  border-bottom-width: 2px;
+}
