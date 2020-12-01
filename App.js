@@ -22,12 +22,36 @@ export default function App() {
 
   };
 
-  useEffect(() => {
+    useEffect(() => {
+        console.log('========================== App did mount');
+        //----------------------- firebase auth
+        const firebaseConfig = {
+              apiKey: "AIzaSyC96u8mIxit6raoqaxRLquVCEyy5pQaOmE",
+              authDomain: "ksucoral.firebaseapp.com",
+              databaseURL: "https://ksucoral.firebaseio.com",
+              projectId: "ksucoral",
+              storageBucket: "ksucoral.appspot.com",
+              messagingSenderId: "609798977796",
+              appId: "1:609798977796:web:ecac764eaefe9a33023851",
+              measurementId: "G-N76L0945VZ"
+      };
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
-      firebase.analytics();
-    console.log('----------------------- testStartData()');
-    for (let i=0; i < 30; i++){
+        console.log('----------------------- firebase:');
+        console.log(firebase);
+        const database = firebase.database();
+        console.log('----------------------- database:');
+        console.log(database);
+        const toolsRef = database.ref('tools/');
+        console.log('----------------------- toolsRef:');
+        console.log(toolsRef);
+        toolsRef.on('value', (snapshot) => {
+            console.log('----------------------- snapshot:');
+            console.log(snapshot);
+            console.log('----------------------- snapshot.val():');
+            console.log(snapshot.val());
+        })
+        for (let i=0; i < 30; i++){
         addTodo(`test_${i}`)
     }
   }, []);

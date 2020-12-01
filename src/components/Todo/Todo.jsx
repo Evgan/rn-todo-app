@@ -3,9 +3,6 @@ import { View, Text, Button } from 'react-native';
 import s from './styles.scss'
 
 export const Todo = ({ props }) => {
-    useEffect(() => {
-        console.log('=============================== Todo did mount');
-    }, []);
     const [showDelete, switchShowDelete] = useState(false);
     const swipeLeftHandler = () => {
         console.log('----------------------- handlerSwipeLeft()');
