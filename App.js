@@ -1,9 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {StyleSheet, View, SafeAreaView, VirtualizedList, Button} from 'react-native';
-import { Navbar } from './src/Navbar/Navbar';
-import {AddTodo} from './src/AddTodo/AddTodo';
-import {Todo} from './src/Todo/Todo';
+import * as firebase from 'firebase';
+import { Navbar } from './src/components/Navbar/Navbar';
+import {AddTodo} from './src/components/AddTodo/AddTodo';
+import {Todo} from './src/components/Todo/Todo';
+import SwipeableRow from './src/components/SwipeableRow/SwipeableRow';
 
 export default function App() {
   const [listTodos, setTodo] = useState([]);
@@ -15,6 +17,21 @@ export default function App() {
       setTodo(prev => [...prev, newTodo])
   };
 
+  const testStartData = () => {
+      const listTodos = [];
+
+  };
+
+  useEffect(() => {
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    console.log('----------------------- testStartData()');
+    for (let i=0; i < 30; i++){
+        addTodo(`test_${i}`)
+    }
+  }, []);
+
   const clearAll = () => {
       setTodo([])
   };
@@ -23,7 +40,7 @@ export default function App() {
 
   const getItem = (data, index) => data[index];
 
-  const renderTodo = ({item}) => <Todo props={item}/>;
+  const renderTodo = ({item}) => <SwipeableRow><Todo props={item}/></SwipeableRow>;
 
   return (
     <View style={styles.container}>

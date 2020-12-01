@@ -1,0 +1,35 @@
+.todo {
+  width: 100%;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  border-bottom-color: #eeeeee;
+  border-bottom-width: 1px;
+  // border-bottom: 1px solid #eeeeee;
+}
+
+.name {
+  width: 100%;
+  color: black;
+  font-size: 20px;
+  padding: 10px;
+  border-bottom-color: black;
+  border-bottom-width: 2px;
+}
+
+.deleteDodo {
+
+}
+
+.front {
+  width: 100%;
+  z-index: 1;
+  background-color: #dfe9dd;
+}
+
+.back {
+  z-index: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
