@@ -13,3 +13,5 @@
 4) Подключение к базе данных firebase.google.com
  * как настроить для expo: https://docs.expo.io/guides/using-firebase/
  * немного в помошь https://www.youtube.com/watch?v=wCl3uKmDzvI&t=235s 
+ * инструкции методов: https://firebase.google.com/docs/firestore/query-data/get-data
+ 

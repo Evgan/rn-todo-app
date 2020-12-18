@@ -24,7 +24,10 @@ export default function App() {
 
     useEffect(() => {
         console.log('========================== App did mount');
-        //----------------------- firebase auth
+
+        // ----------------------------------------------------
+        //        firebase auth
+        // ----------------------------------------------------
         const firebaseConfig = {
               apiKey: "AIzaSyC96u8mIxit6raoqaxRLquVCEyy5pQaOmE",
               authDomain: "ksucoral.firebaseapp.com",
@@ -32,25 +35,69 @@ export default function App() {
               projectId: "ksucoral",
               storageBucket: "ksucoral.appspot.com",
               messagingSenderId: "609798977796",
-              appId: "1:609798977796:web:ecac764eaefe9a33023851",
-              measurementId: "G-N76L0945VZ"
+              appId: "1:609798977796:web:ecac764eaefe9a33023851"
+              // measurementId: "G-N76L0945VZ"
       };
+      //   const firebaseConfig = {
+      //       apiKey: "AIzaSyAzzkA1z6V1wxs36QDXk8zyvmf26L_l894",
+      //       authDomain: "coral-b55d5.firebaseapp.com",
+      //       databaseURL: "https://coral-b55d5.firebaseio.com",
+      //       projectId: "coral-b55d5",
+      //       storageBucket: "coral-b55d5.appspot.com",
+      //       messagingSenderId: "252228049217",
+      //       appId: "1:252228049217:android:4e09146c34a5c3e9"
+      //       // measurementId: ""
+      //   };
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
         console.log('----------------------- firebase:');
         console.log(firebase);
-        const database = firebase.database();
-        console.log('----------------------- database:');
-        console.log(database);
-        const toolsRef = database.ref('tools/');
-        console.log('----------------------- toolsRef:');
-        console.log(toolsRef);
-        toolsRef.on('value', (snapshot) => {
-            console.log('----------------------- snapshot:');
-            console.log(snapshot);
-            console.log('----------------------- snapshot.val():');
-            console.log(snapshot.val());
-        })
+
+
+        // ----------------------------------------------------
+        //        Realtime Database
+        // ----------------------------------------------------
+        async function getDataFromRealtimeBase() {
+            const database = await firebase.database();
+            console.log('----------------------- database:');
+            console.log(database);
+            //const toolsRef = database.ref('tools/');
+            const toolsRef = database.ref('/');
+            console.log('----------------------- toolsRef:');
+            console.log(toolsRef);
+            toolsRef.on('value', (snapshot) => {
+                console.log('----------------------- snapshot:');
+                console.log(snapshot);
+                console.log('----------------------- snapshot.val():');
+                console.log(snapshot.val());
+            });
+        }
+        // getDataFromRealtimeBase();
+
+
+        // ----------------------------------------------------
+        //        cloud Database
+        // ----------------------------------------------------
+
+        async function getDataFromCloudBase(){
+            const firestore = await firebase
+                .firestore();
+            console.log('----------------------- firestore:');
+            console.log(firestore);
+            const todosList = await firebase
+                .firestore()
+                .collection('toolsDB')
+                .doc('todosList')
+                .get();
+            if(todosList.exists){
+                const todosListData = todosList.data();
+                console.log('----------------------- todosListData:');
+                console.log(todosListData);
+            }
+
+        }
+        getDataFromCloudBase();
+
         for (let i=0; i < 30; i++){
         addTodo(`test_${i}`)
     }
