@@ -1,9 +1,10 @@
-import React, {useEffect} from 'react';
-import { View, Text } from 'react-native';
+import React from 'react';
+import { createStore } from 'redux';
 import * as firebase from 'firebase';
-import {createStore} from 'redux';
+import { ReactReduxFirebaseProvider } from 'react-redux-firebase'
+import { RNFirebase } from 'react-native-firebase';
 import rootReducer from './src/reducers';
-import {RNFirebase} from "react-native-firebase";
+import { View, Text } from 'react-native';
 
 export default function App() {
 
@@ -42,11 +43,17 @@ export default function App() {
     // ----------------------------------------------------
     const rrfProps = {
         firebase: RNFirebase,
+        config: rrfConfig,
+        dispatch: store.dispatch
     };
 
-    return (
-      <View>
-          <Text>Test Firebase</Text>
-      </View>
-    );
+  return (
+      <Provider store={store}>
+          <ReactReduxFirebaseProvider {...rrfProps}>
+              <View>
+                  <Text>Test Firebase</Text>
+              </View>
+          </ReactReduxFirebaseProvider>
+      </Provider>
+  );
 }
