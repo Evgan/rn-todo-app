@@ -2,8 +2,8 @@ import React, {useEffect} from 'react';
 import { View, Text } from 'react-native';
 import * as firebase from 'firebase';
 import {createStore} from 'redux';
+import { RNFirebase } from 'react-native-firebase';
 import rootReducer from './src/reducers';
-import {RNFirebase} from "react-native-firebase";
 
 export default function App() {
 

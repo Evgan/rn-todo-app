@@ -17,15 +17,31 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "com.mypackage.todoapp",
+      "googleServicesFile": "./GoogleService-Info.plist",
       "supportsTablet": true
     },
     "android": {
+      "package": "com.mypackage.todoapp",
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       }
     },
     "web": {
+      "config": {
+        "firebase": {
+          "apiKey": "AIzaSyC96u8mIxit6raoqaxRLquVCEyy5pQaOmE",
+          "authDomain": "ksucoral.firebaseapp.com",
+          "databaseURL": "https://ksucoral.firebaseio.com",
+          "projectId": "ksucoral",
+          "storageBucket": "ksucoral.appspot.com",
+          "messagingSenderId": "609798977796",
+          "appId": "1:609798977796:web:ecac764eaefe9a33023851",
+          "measurementId": "G-N76L0945VZ"
+        }
+      },
       "favicon": "./assets/favicon.png"
     },
     "packagerOpts": {
