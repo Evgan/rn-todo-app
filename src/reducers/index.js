@@ -1,12 +1,8 @@
 import { combineReducers } from 'redux'
-import { firebaseReducer } from 'react-redux-firebase'
-import { connectRouter } from 'connected-react-router'
+import totosReducer from '../ducks/todos'
 
-const appReducer = history => combineReducers( {
-    firebase: firebaseReducer,
-    router: connectRouter(history)
+const rootReducer = combineReducers( {
+    totos: totosReducer
 });
-
-const rootReducer = history => (state, action) => appReducer(history)(state, action);
 
 export default rootReducer

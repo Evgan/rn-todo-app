@@ -28,3 +28,6 @@
  * документация: https://docs.expo.io/guides/setup-native-firebase/
  #####FAIL: react-native-firebase: The Hermes VM availble with react-native 0.60.3 and higher is not currectly supported
    https://www.npmjs.com/package/react-native-firebase
+   
+7) Настроим Redux
+ * документация: https://levelup.gitconnected.com/react-native-redux-implementing-redux-saga-for-an-asynchronous-flow-90a0e9d7d8e8
