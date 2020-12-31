@@ -1,16 +1,32 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { View, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import { store } from './src/store/store';
+import {TodosScreen, LoginScreen, RegistrationsScreen} from './src/screens'
+
+const Stack = createStackNavigator();
 
 export default function App() {
-
     return (
         <Provider store={store}>
-            <View>
-              <Text>Test Firebase</Text>
-            </View>
+            <NavigationContainer>
+                <Stack.Navigator>
+                    <Stack.Screen
+                        name='Login'
+                        component={LoginScreen}
+                    />
+                    <Stack.Screen
+                        name='todos'
+                        component={TodosScreen}
+                    />
+                    <Stack.Screen
+                        name='Registrations'
+                        component={RegistrationsScreen}
+                    />
+                </Stack.Navigator>
+            </NavigationContainer>
         </Provider>
     );
 }

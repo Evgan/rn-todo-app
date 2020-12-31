@@ -1,0 +1,23 @@
+.container {
+  flex: 1;
+  align-items: center;
+};
+
+.logo {
+  flex: 1;
+  height: 120px;
+  width: 90px;
+  align-self: center;
+  margin: 30px;
+};
+
+.footerView {
+  flex: 1;
+  align-items: center;
+  margin-top: 20px;
+};
+.footerText {
+  font-size: 16px;
+  color: #2e2e2d;
+};
+

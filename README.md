@@ -31,3 +31,7 @@
    
 7) Настроим Redux
  * документация: https://levelup.gitconnected.com/react-native-redux-implementing-redux-saga-for-an-asynchronous-flow-90a0e9d7d8e8
+
+8) Потрогаем react-navigation
+ * пример: https://www.freecodecamp.org/news/react-native-firebase-tutorial/
+ * интеграция Navigation с Redux: https://reactnavigation.org/docs/redux-integration/
