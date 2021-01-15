@@ -1,22 +1,23 @@
-import * as firebase from 'src/servises/firebase';
+import * as firebase from 'firebase';
 
 // ----------------------------------------------------
 //        firebase auth
 // ----------------------------------------------------
 const firebaseConfig = {
-    apiKey: "AIzaSyC96u8mIxit6raoqaxRLquVCEyy5pQaOmE",
-    authDomain: "ksucoral.firebaseapp.com",
-    databaseURL: "https://ksucoral.firebaseio.com",
-    projectId: "ksucoral",
-    storageBucket: "ksucoral.appspot.com",
-    messagingSenderId: "609798977796",
-    appId: "1:609798977796:web:ecac764eaefe9a33023851",
-    measurementId: "G-N76L0945VZ"
+    apiKey: "AIzaSyD8BDNnn4sgocoV6d096GQotxE59wJSP4E",
+    authDomain: "rn-todo-app-5c40d.firebaseapp.com",
+    projectId: "rn-todo-app-5c40d",
+    storageBucket: "rn-todo-app-5c40d.appspot.com",
+    messagingSenderId: "735361092862",
+    appId: "1:735361092862:web:deb5adb3d188f5186fa9af"
 };
 
 // Initialize Firebase
 if (!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig);
+    console.log('################################### firebase.initializeApp: ');
+    const initApp = firebase.initializeApp(firebaseConfig);
+    console.log('----------------------- initApp:');
+    console.log(initApp);
 }
 
 export { firebase };

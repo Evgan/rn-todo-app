@@ -4,17 +4,49 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 import s from './styles.scss';
 import {Button, ButtonLink, Input} from '../../UI'
+import { firebase } from '../../../../firebase/config'
 
-const Registrations = (props) => {
+const Registrations = ({ navigation }) => {
     const [fullName, setFullName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const registrationHandler = () => {
-        console.log('----------------------- registrationHandler > e:');
+        if(password !== confirmPassword) {
+            alert("Password don't match");
+            return;
+        }
+        console.log('######################################');
+        console.log('----------------------- firebase:');
+        console.log(firebase);
+        firebase
+            .auth()
+            .createUserWithEmailAndPassword(email, password)
+            .then((response) => {
+                console.log('----------------------- response:');
+                console.log(response);
+                const { uid } = response?.user || {};
+                const data = {
+                    id: uid,
+                    email,
+                    fullName
+                };
+                const usersRef = firebase.firestore().collection('users');
+                usersRef
+                    .doc(uid)
+                    .set(data)
+                    .then(() => {
+                        navigation.navigate('todos', {user: data})
+                    })
+                    .catch((error) => {
+                        alert(error)
+                    })
+            })
+            .catch((error) => {
+                alert(error)
+            })
     };
     const loginHandler = () => {
-        const { navigation } = props;
         navigation?.navigate('Login')
     };
     return (

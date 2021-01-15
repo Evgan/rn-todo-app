@@ -19,8 +19,9 @@ export default function App() {
                     />
                     <Stack.Screen
                         name='todos'
-                        component={TodosScreen}
-                    />
+                    >
+                        {props => <TodosScreen {...props} />}
+                    </Stack.Screen>
                     <Stack.Screen
                         name='Registrations'
                         component={RegistrationsScreen}
